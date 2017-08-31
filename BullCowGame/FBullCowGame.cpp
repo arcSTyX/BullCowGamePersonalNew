@@ -10,7 +10,7 @@ using int32 = int;
 
 void FBullCowGame::Reset() // This is the Reset Code. I moved the Reset function to the constructor :-)
 {
-	MyCurrentTry = 0;
+	MyCurrentTry = 1;
 	bFinalStatus = false;
 	const FString HIDDEN_WORD = MyHiddenWord;
 	MyHiddenWord = GetHiddenWord();
