@@ -1,7 +1,10 @@
 #include "FBullCowGame.h"
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
+using namespace std;
 //To make the code unreal friendly
 using FString = std::string;
 using int32 = int;
@@ -15,7 +18,24 @@ void FBullCowGame::Reset() // This is the Reset Code. I moved the Reset function
 	const FString HIDDEN_WORD = MyHiddenWord;
 	MyHiddenWord = GetHiddenWord();
 	const int32  MAX_TRIES = GetHiddenWordLength();
-	MyMaxTries = 5;
+	MyMaxTries = GetHiddenWordLength();
+}
+
+FString FBullCowGame::GetPVPWord()
+{
+	{
+		FString PVPWord;
+		srand(time(0));
+
+		const string wordList[4] = { "icecream",
+			"computer", "dictionary", "algorithm" };
+
+		FString word = wordList[rand() % 4];
+
+		cout << word << endl;
+
+		return PVPWord;
+	}
 }
 
 FString FBullCowGame::PrintGameSummary()
@@ -58,8 +78,10 @@ int32  FBullCowGame::GetHiddenWordLength() const
 
 }
 
+
 FString FBullCowGame::GetHiddenWord()
 {
+
 	{
 
 		FString SECRET_WORD;

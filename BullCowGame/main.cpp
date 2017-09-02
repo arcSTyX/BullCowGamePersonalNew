@@ -14,7 +14,7 @@ void PrintIntro();
 void PlayGame();
 FText GetValidGuess();
 bool AskToPlayAgain();
-
+bool AskGameType();
 FBullCowGame BCGame;
 //Instantiate a new Game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -26,6 +26,7 @@ int main()
 	bool bPlayAgain = false;
 	do {
 		BCGame.Reset();
+		AskGameType();
 		PrintIntro();
 		PlayGame();
 		//TODO add a game summary after completion. Can come after Play Game function no problem.=
@@ -39,6 +40,7 @@ int main()
 // introduce the game
 void PrintIntro()
 {
+	AskGameType();
 	int32  WORD_LENGTH = BCGame.GetHiddenWordLength();
 
 std::cout<< 
@@ -74,6 +76,7 @@ void PlayGame()
 	}
 	BCGame.PrintGameSummary();
 }
+
 
 //Loop continously until user gives a valid guess
 FText GetValidGuess()
@@ -112,11 +115,17 @@ FText GetValidGuess()
 	return Guess;
 }
 
-
-
 bool AskToPlayAgain()
 {
 	std::cout << "Do you want to play again (y/n)? ";
+	FText Response = "";
+	getline(std::cin, Response);
+	return (Response[0] == 'y') || (Response[0] == 'Y');
+}
+
+bool AskGameType()
+{
+	std::cout << "Do you want to play PVP (y/n)? Typing Y will give the option of choosing a secret number, typing N will let the application choose from a dictionary ";
 	FText Response = "";
 	getline(std::cin, Response);
 	return (Response[0] == 'y') || (Response[0] == 'Y');

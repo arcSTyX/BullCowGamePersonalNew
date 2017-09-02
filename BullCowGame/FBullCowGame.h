@@ -40,7 +40,8 @@ public:
 
 	FBullCowCount SubmitValidGuess(FString);
 	FString GetHiddenWord();
-
+	FString GetPVPWord();
+	int32 AskGameType() const;
 	FString PrintGameSummary();
 	void Reset();
 
@@ -49,6 +50,7 @@ private:
 	int32  MyCurrentTry;
 	int32  MyMaxTries;
 	FString MyHiddenWord;
+	FString PVPWord;
 	bool bFinalStatus;
 
 };
